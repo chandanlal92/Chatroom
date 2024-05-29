@@ -50,8 +50,8 @@ admin joined!
 ```
 
 ## Client Output (User):
-Choose your nickname: user1
 ```bash
+Choose your nickname: user1
 Connected to server!
 user1: Hello everyone!
 You were kicked by an admin! 
