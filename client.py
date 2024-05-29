@@ -1,18 +1,20 @@
 import socket
 import threading
 
+# Handles Nickname request
 def choose_nickname():
     nickname = input("Choose your nickname: ")
     password = None
     if nickname == 'admin':
         password = input("Enter password for admin: ")
     return nickname, password
-
+# Connects clients to the server 
 def connect_to_server():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect(('127.0.0.1', 55555))
     return client
 
+#Handles Messages and Commands recieved from client 
 def receive(client, semaphore, stop_thread):
     while True:
         if stop_thread[0]:
@@ -39,7 +41,7 @@ def receive(client, semaphore, stop_thread):
             print(f"An error occurred: {e}")
             client.close()
             break
-
+#Handles Messages and Commands sent from client 
 def write(client, nickname, semaphore, stop_thread):
     while True:
         if stop_thread[0]:
